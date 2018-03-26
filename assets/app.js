@@ -14,11 +14,11 @@ import { sync } from 'vuex-router-sync'
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
-    apiKey: 'AIzaSyBrMrSeFfaeRfPXVXlPhR11J2b1zZxhhPc',
-    authDomain: 'ht-storybook.firebaseapp.com',
-    databaseURL: 'https://ht-storybook.firebaseio.com',
-    projectId: 'ht-storybook',
-    storageBucket: 'gs://ht-storybook.appspot.com'
+    apiKey: "AIzaSyDNIZrN4eWKmIHRDZz4ukCzalTGVQoe_Jc",
+    authDomain: "vuetify-meetups.firebaseapp.com",
+    databaseURL: "https://vuetify-meetups.firebaseio.com",
+    projectId: "vuetify-meetups",
+    storageBucket: "vuetify-meetups.appspot.com"
   });
 }
 
@@ -48,34 +48,16 @@ Object.keys(Components).forEach(key => {
   Vue.component(key, Components[key])
 })
 
-// Expose a factory function that creates a fresh set of store, router,
-// app instances on each call (which is called for each SSR request)
 export function createApp (ssrContext) {
-  // create store and router instances
-  // const store = createStore()
   const router = createRouter()
-  // sync the router with the vuex store.
-  // this registers `store.state.route`
   sync(store, router)
 
-  // create the app instance.
-  // here we inject the router, store and ssr context to all child components,
-  // making them available everywhere as `this.$router` and `this.$store`.
   const app = new Vue({
     router,
     store,
     ssrContext,
     render: h => h(App),
     beforeCreate () {
-      // if (!firebase.apps.length) {
-      //   firebase.initializeApp({
-      //     apiKey: 'AIzaSyBrMrSeFfaeRfPXVXlPhR11J2b1zZxhhPc',
-      //     authDomain: 'ht-storybook.firebaseapp.com',
-      //     databaseURL: 'https://ht-storybook.firebaseio.com',
-      //     projectId: 'ht-storybook',
-      //     storageBucket: 'gs://ht-storybook.appspot.com'
-      //   });
-      // }
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           this.$store.dispatch('autoSignIn', user)
@@ -85,8 +67,5 @@ export function createApp (ssrContext) {
     }
   })
 
-  // expose the app, the router and the store.
-  // note we are not mounting the app here, since bootstrapping will be
-  // different depending on whether we are in a browser or on the server.
   return { app, router, store }
 }

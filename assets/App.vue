@@ -26,23 +26,23 @@
       )
       v-toolbar-title
         router-link(
-          to="/" 
-          tag="span" 
+          to="/"
+          tag="span"
           style="cursor: pointer"
         ) DevMeetup
       v-spacer
       v-toolbar-items.hidden-xs-only
         v-btn(
-          flat 
-          v-for='item in menuItems' 
+          flat
+          v-for='item in menuItems'
           :key='item.title'
           :to='item.link'
         )
           v-icon(left) {{ item.icon }}
           | {{ item.title }}
         v-btn(
-          flat 
-          v-if="userIsAuthenticated" 
+          flat
+          v-if="userIsAuthenticated"
           @click="onLogout"
         )
           v-icon(left) exit_to_app
@@ -67,7 +67,6 @@
 
   export default {
     mixins: [Meta],
-
     data () {
       return {
         sideNav: false,
@@ -90,8 +89,6 @@
         return menuItems
       },
       userIsAuthenticated () {
-        // console.log('user')
-        // console.log(this.$store.getters.user)
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       }
     },
@@ -99,10 +96,6 @@
       onLogout () {
         this.$store.dispatch('logout')
       }
-    },
-    mounted () {
-      console.log(this.$store.getters)
-      console.log(this.$store.getters['user'])
     }
   }
 </script>

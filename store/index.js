@@ -4,54 +4,19 @@ import firebase from 'firebase'
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
-    apiKey: 'AIzaSyBrMrSeFfaeRfPXVXlPhR11J2b1zZxhhPc',
-    authDomain: 'ht-storybook.firebaseapp.com',
-    databaseURL: 'https://ht-storybook.firebaseio.com',
-    projectId: 'ht-storybook',
-    storageBucket: 'gs://ht-storybook.appspot.com'
+    apiKey: "AIzaSyDNIZrN4eWKmIHRDZz4ukCzalTGVQoe_Jc",
+    authDomain: "vuetify-meetups.firebaseapp.com",
+    databaseURL: "https://vuetify-meetups.firebaseio.com",
+    projectId: "vuetify-meetups",
+    storageBucket: "vuetify-meetups.appspot.com"
   });
 }
-// let userObj
-// firebase.auth().onAuthStateChanged(user => {
-//   if (user) {
-//     userObj = {
-//       id: user.uid
-//     }
-//   } else {
-//     userObj = null
-//   }
-// })
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    loadedMeetups: [
-      // { 
-      //   imageUrl: 'https://media.timeout.com/images/103444978/630/472/image.jpg',
-      //   id: '1asdfads', 
-      //   title: 'Meetup in New York',
-      //   date: new Date(),
-      //   location: 'New York',
-      //   description: 'It is New York'
-      // },
-      // { 
-      //   imageUrl: 'https://www.telegraph.co.uk/content/dam/Travel/hotels/europe/france/paris/eiffel-tower-paris-p.jpg?imwidth=1160',
-      //   id: 'adfa213d213213sdfads', 
-      //   title: 'Meetup in Paris',
-      //   date: new Date(),
-      //   location: 'Paris',
-      //   description: 'It is Paris'
-      // },
-      // { 
-      //   imageUrl: 'https://www.telegraph.co.uk/content/dam/Travel/2018/February/Akihabara-overview.jpg?imwidth=1240', 
-      //   id: 'adfads3dfads', 
-      //   title: 'Meetup in Tokyo',
-      //   date: new Date(),
-      //   location: 'Tokyo',
-      //   description: 'It is Tokyo'
-      // },
-    ],
+    loadedMeetups: [],
     user: null,
     loading: false,
     error: null
@@ -126,7 +91,7 @@ export const store = new Vuex.Store({
           return firebase.database().ref('meetups').child(key).update({imageUrl: imageUrl})
         })
         .then(() => {
-          commit('createMeetup', { 
+          commit('createMeetup', {
             ...meetup,
             imageUrl: imageUrl,
             id: key
@@ -135,7 +100,7 @@ export const store = new Vuex.Store({
         .catch(error => {
           console.log(error)
         })
-      
+
     },
     signUserUp ({commit}, payload) {
       commit('setLoading', true)
