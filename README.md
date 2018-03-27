@@ -15,7 +15,6 @@
 > [https://vuetify-meetups.herokuapp.com](https://vuetify-meetups.herokuapp.com)
 
 ## install
-
 ```bash
 # instal dependncies
 npm install
