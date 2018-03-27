@@ -12,7 +12,7 @@
 
 ## online demo
 
-> [https://vuetify-meetups.herokuapp.com/](https://vuetify-meetups.herokuapp.com/)
+> [https://vuetify-meetups.herokuapp.com](https://vuetify-meetups.herokuapp.com)
 
 ## install
 
