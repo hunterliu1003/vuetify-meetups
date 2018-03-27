@@ -17,20 +17,21 @@
 ## install
 
 ```bash
+# instal dependncies
 npm install
 ```
 
 ## development
 ```bash
+# serve with hot reload at localhost:8080
 npm run dev
-# localhost:8080
 ```
 
 ## production
 ```bash
+# build for production with minification
 npm build
-# destination: ./public
 
+# serve with hot reload at localhost:8080
 npm run start
-# localhost:8080
 ```
